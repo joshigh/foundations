@@ -164,7 +164,7 @@
     <h2 class="section-title">Manufactured Home Foundation Gallery</h2>
     <div class="gallery-wrap">
       <div class="gallery-track" id="galleryTrack">
-        <div class="gallery-slide"><div class="gallery-slide-icon">🏗️</div>Foundation Inspection — Piers &amp; Footings</div>
+      <div class="gallery-slide" style="background: #1a1a2e; background-image: url('blog/foundation-anchor.jpg'); background-size: cover; background-position: center;"></div>
         <div class="gallery-slide"><div class="gallery-slide-icon">🔩</div>Tie-Down Anchoring Assessment</div>
         <div class="gallery-slide"><div class="gallery-slide-icon">📐</div>Structural Compliance Documentation</div>
         <div class="gallery-slide"><div class="gallery-slide-icon">🏠</div>Crawl Space Evaluation</div>
@@ -199,103 +199,117 @@
       </div>
       <div class="order-body">
 
-        <div class="service-select-label">Select Service</div>
-        <div class="service-option">
-          <div>
-            <div class="service-option-name">Standard Foundation Certification</div>
-            <div class="service-option-price">$495</div>
-          </div>
-          <div class="check-circle">✓</div>
+        <!-- Success message (hidden until submit) -->
+        <div id="orderSuccess" style="display:none; text-align:center; padding: 40px 20px;">
+          <div style="font-size:3rem; margin-bottom:16px;">✅</div>
+          <h3 style="color:var(--navy); margin-bottom:12px;">Order Received</h3>
+          <p>We've received your certification request and will be in touch within one business day to confirm details and next steps.</p>
         </div>
 
-        <!-- Step 1 -->
-        <div class="step-heading">
-          <div class="step-num">1</div>
-          <h3>Your Information</h3>
-        </div>
-        <div class="form-group"><label>First Name *</label><input type="text" placeholder="First name" /></div>
-        <div class="form-group"><label>Last Name *</label><input type="text" placeholder="Last name" /></div>
-        <div class="form-group"><label>Email *</label><input type="email" placeholder="Email address" /></div>
-        <div class="form-group"><label>Phone *</label><input type="tel" placeholder="Phone number" /></div>
-
-        <!-- Step 2 -->
-        <div class="step-heading">
-          <div class="step-num">2</div>
-          <h3>Certificate Recipient</h3>
-        </div>
-        <div class="callout-blue">Please enter the name of the person to whom the engineer certificate should be addressed — usually the buyer.</div>
-        <div class="form-group"><label>Certificate Recipient Name *</label><input type="text" placeholder="Enter full name of certificate recipient" /></div>
-
-        <!-- Step 3 -->
-        <div class="step-heading">
-          <div class="step-num">3</div>
-          <h3>Billing Address</h3>
-        </div>
-        <div class="form-group"><label>Street Address *</label><input type="text" /></div>
-        <div class="form-group"><label>City *</label><input type="text" /></div>
-        <div class="form-group"><label>State *</label><input type="text" value="FL" /></div>
-        <div class="form-group"><label>ZIP Code *</label><input type="text" /></div>
-
-        <!-- Step 4 -->
-        <div class="step-heading">
-          <div class="step-num">4</div>
-          <h3>Property to be Certified</h3>
-        </div>
-        <div class="form-group"><label>Property Address *</label><input type="text" /></div>
-        <div class="form-group"><label>City *</label><input type="text" /></div>
-        <div class="form-group"><label>State *</label><input type="text" value="FL" /></div>
-        <div class="form-group"><label>ZIP Code *</label><input type="text" /></div>
-        <div class="form-group"><label>Additional Notes</label><textarea placeholder="Any details about the property we should know..."></textarea></div>
-
-        <!-- Property Additions -->
-        <div class="step-heading">
-          <div class="step-num" style="background:var(--blue); font-size:1rem;">🏠</div>
-          <h3>Property Additions</h3>
-        </div>
-        <div class="callout-blue">If your property includes additions such as porches, decks, extra rooms, or other structures attached to the main foundation, an additional inspection fee applies.</div>
-        <div class="addon-card">
-          <div class="addon-header">
-            <input type="checkbox" class="addon-checkbox" id="addons" />
-            <div class="addon-info">
-              <h4>Property has additions (porch, deck, extra room, etc.)</h4>
-              <div class="addon-price">Additional inspection fee: $100</div>
-              <p>Examples include covered porches, enclosed porches, decks attached to the foundation, room additions, carports, or any other structures connected to the main foundation.</p>
+        <div id="orderForm">
+          <div class="service-select-label">Select Service</div>
+          <div class="service-option">
+            <div>
+              <div class="service-option-name">Standard Foundation Certification</div>
+              <div class="service-option-price" id="basePrice">$495</div>
             </div>
+            <div class="check-circle">✓</div>
           </div>
-        </div>
 
-        <!-- Rush Order -->
-        <div class="rush-icon">⚡</div>
-        <h3 style="font-family:var(--font-display); font-size:1.1rem; color:var(--navy); margin-bottom:14px;">Expedited Order (Rush Order)</h3>
-        <div class="callout-gold">
-          <span>🕐</span>
-          <span>Need your certification faster? Our expedited service guarantees completion within 72 hours for an additional fee.</span>
-        </div>
-        <div class="addon-card">
-          <div class="addon-header">
-            <input type="checkbox" class="addon-checkbox" id="rush" />
-            <div class="addon-info">
-              <h4>Expedited Order (Rush Order) — 72-hour completion</h4>
-              <div class="addon-price">Additional fee: $200</div>
-              <p>We will complete your order within 72 hours. Perfect for urgent closings or time-sensitive transactions.</p>
+          <form id="certForm">
+            <input type="hidden" name="_formtype" value="ORDER" />
+            <input type="hidden" name="Total" id="totalField" value="$495" />
+
+            <!-- Step 1 -->
+            <div class="step-heading">
+              <div class="step-num">1</div>
+              <h3>Your Information</h3>
             </div>
-          </div>
-        </div>
+            <div class="form-group"><label>First Name *</label><input type="text" name="First Name" placeholder="First name" required /></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" name="Last Name" placeholder="Last name" required /></div>
+            <div class="form-group"><label>Email *</label><input type="email" name="Email" placeholder="Email address" required /></div>
+            <div class="form-group"><label>Phone *</label><input type="tel" name="Phone" placeholder="Phone number" required /></div>
 
-        <!-- Step 5 -->
-        <div class="step-heading">
-          <div class="step-num">5</div>
-          <h3>Lender Contact Information</h3>
-        </div>
-        <div class="callout-blue">Please provide your lender's contact information to facilitate communication during the certification process.</div>
-        <div class="form-group"><label>Lender / Company Name</label><input type="text" /></div>
-        <div class="form-group"><label>Loan Officer Name</label><input type="text" /></div>
-        <div class="form-group"><label>Loan Officer Email</label><input type="email" /></div>
-        <div class="form-group"><label>Loan Officer Phone</label><input type="tel" /></div>
+            <!-- Step 2 -->
+            <div class="step-heading">
+              <div class="step-num">2</div>
+              <h3>Certificate Recipient</h3>
+            </div>
+            <div class="callout-blue">Please enter the name of the person to whom the engineer certificate should be addressed — usually the buyer.</div>
+            <div class="form-group"><label>Certificate Recipient Name *</label><input type="text" name="Certificate Recipient" placeholder="Enter full name of certificate recipient" required /></div>
 
-        <hr class="divider" />
-        <p class="terms-note">By clicking "Proceed to Payment," you agree to our terms and conditions.</p>
-        <button class="payment-btn">Proceed to Payment — $495</button>
+            <!-- Step 3 -->
+            <div class="step-heading">
+              <div class="step-num">3</div>
+              <h3>Billing Address</h3>
+            </div>
+            <div class="form-group"><label>Street Address *</label><input type="text" name="Billing Street" required /></div>
+            <div class="form-group"><label>City *</label><input type="text" name="Billing City" required /></div>
+            <div class="form-group"><label>State *</label><input type="text" name="Billing State" value="FL" required /></div>
+            <div class="form-group"><label>ZIP Code *</label><input type="text" name="Billing ZIP" required /></div>
+
+            <!-- Step 4 -->
+            <div class="step-heading">
+              <div class="step-num">4</div>
+              <h3>Property to be Certified</h3>
+            </div>
+            <div class="form-group"><label>Property Address *</label><input type="text" name="Property Address" required /></div>
+            <div class="form-group"><label>City *</label><input type="text" name="Property City" required /></div>
+            <div class="form-group"><label>State *</label><input type="text" name="Property State" value="FL" required /></div>
+            <div class="form-group"><label>ZIP Code *</label><input type="text" name="Property ZIP" required /></div>
+            <div class="form-group"><label>Additional Notes</label><textarea name="Additional Notes" placeholder="Any details about the property we should know..."></textarea></div>
+
+            <!-- Property Additions -->
+            <div class="step-heading">
+              <div class="step-num" style="background:var(--blue); font-size:1rem;">🏠</div>
+              <h3>Property Additions</h3>
+            </div>
+            <div class="callout-blue">If your property includes additions such as porches, decks, extra rooms, or other structures attached to the main foundation, an additional inspection fee applies.</div>
+            <div class="addon-card">
+              <div class="addon-header">
+                <input type="checkbox" class="addon-checkbox" id="addons" name="Property Additions" value="Yes — additional $100" />
+                <div class="addon-info">
+                  <h4>Property has additions (porch, deck, extra room, etc.)</h4>
+                  <div class="addon-price">Additional inspection fee: $100</div>
+                  <p>Examples include covered porches, enclosed porches, decks attached to the foundation, room additions, carports, or any other structures connected to the main foundation.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rush Order -->
+            <div class="rush-icon">⚡</div>
+            <h3 style="font-family:var(--font-display); font-size:1.1rem; color:var(--navy); margin-bottom:14px;">Expedited Order (Rush Order)</h3>
+            <div class="callout-gold">
+              <span>🕐</span>
+              <span>Need your certification faster? Our expedited service guarantees completion within 72 hours for an additional fee.</span>
+            </div>
+            <div class="addon-card">
+              <div class="addon-header">
+                <input type="checkbox" class="addon-checkbox" id="rush" name="Rush Order" value="Yes — additional $200" />
+                <div class="addon-info">
+                  <h4>Expedited Order (Rush Order) — 72-hour completion</h4>
+                  <div class="addon-price">Additional fee: $200</div>
+                  <p>We will complete your order within 72 hours. Perfect for urgent closings or time-sensitive transactions.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-heading">
+              <div class="step-num">5</div>
+              <h3>Lender Contact Information</h3>
+            </div>
+            <div class="callout-blue">Please provide your lender's contact information to facilitate communication during the certification process.</div>
+            <div class="form-group"><label>Lender / Company Name</label><input type="text" name="Lender Company" /></div>
+            <div class="form-group"><label>Loan Officer Name</label><input type="text" name="Loan Officer Name" /></div>
+            <div class="form-group"><label>Loan Officer Email</label><input type="email" name="Loan Officer Email" /></div>
+            <div class="form-group"><label>Loan Officer Phone</label><input type="tel" name="Loan Officer Phone" /></div>
+
+            <hr class="divider" />
+            <p class="terms-note">By submitting this form you agree to our terms and conditions. We will contact you to confirm your order and collect payment.</p>
+            <button type="submit" class="payment-btn" id="submitBtn">Submit Order — $495</button>
+          </form>
+        </div>
 
       </div>
     </div>
@@ -381,11 +395,18 @@
 
       <div>
         <h4 style="font-weight:700; font-size:1rem; color:var(--navy); margin-bottom:20px;">Send Us a Message</h4>
-        <div class="form-group"><label>Name *</label><input type="text" placeholder="Your name" /></div>
-        <div class="form-group"><label>Email *</label><input type="email" placeholder="Your email" /></div>
-        <div class="form-group"><label>Phone</label><input type="tel" placeholder="Your phone number" /></div>
-        <div class="form-group"><label>Message *</label><textarea placeholder="How can we help you?"></textarea></div>
-        <button class="btn btn-navy">Send Message</button>
+        <div id="contactSuccess" style="display:none; padding:28px; background:var(--gray-bg); border-radius:var(--radius-md); text-align:center;">
+          <div style="font-size:2rem; margin-bottom:10px;">✅</div>
+          <p style="color:var(--navy); font-weight:600;">Message received. We'll be in touch shortly.</p>
+        </div>
+        <form id="contactForm" style="">
+          <input type="hidden" name="_formtype" value="CONTACT" />
+          <div class="form-group"><label>Name *</label><input type="text" name="Name" placeholder="Your name" required /></div>
+          <div class="form-group"><label>Email *</label><input type="email" name="Email" placeholder="Your email" required /></div>
+          <div class="form-group"><label>Phone</label><input type="tel" name="Phone" placeholder="Your phone number" /></div>
+          <div class="form-group"><label>Message *</label><textarea name="Message" placeholder="How can we help you?" required></textarea></div>
+          <button type="submit" class="btn btn-navy">Send Message</button>
+        </form>
       </div>
 
     </div>
@@ -438,12 +459,12 @@
 </footer>
 
 <script>
+  const FORMSPREE = 'https://formspree.io/f/xbdparoj';
+
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
@@ -451,33 +472,71 @@
   // Gallery slider
   let current = 0;
   const total = 5;
-  function changeSlide(dir) {
-    current = (current + dir + total) % total;
-    updateSlider();
-  }
-  function goToSlide(n) {
-    current = n;
-    updateSlider();
-  }
+  function changeSlide(dir) { current = (current + dir + total) % total; updateSlider(); }
+  function goToSlide(n) { current = n; updateSlider(); }
   function updateSlider() {
     document.getElementById('galleryTrack').style.transform = `translateX(-${current * 100}%)`;
-    document.querySelectorAll('.gallery-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === current);
-    });
+    document.querySelectorAll('.gallery-dot').forEach((d, i) => d.classList.toggle('active', i === current));
   }
 
-  // Payment button — dynamic total
+  // Dynamic order total
   const addonsCheck = document.getElementById('addons');
   const rushCheck = document.getElementById('rush');
-  const payBtn = document.querySelector('.payment-btn');
+  const submitBtn = document.getElementById('submitBtn');
+  const totalField = document.getElementById('totalField');
+
   function updateTotal() {
-    let total = 495;
-    if (addonsCheck.checked) total += 100;
-    if (rushCheck.checked) total += 200;
-    payBtn.textContent = `Proceed to Payment — $${total}`;
+    let amount = 495;
+    if (addonsCheck.checked) amount += 100;
+    if (rushCheck.checked) amount += 200;
+    submitBtn.textContent = `Submit Order — $${amount}`;
+    totalField.value = `$${amount}`;
   }
   addonsCheck.addEventListener('change', updateTotal);
   rushCheck.addEventListener('change', updateTotal);
+
+  // Order form submission
+  document.getElementById('certForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+    const data = new FormData(this);
+    try {
+      const res = await fetch(FORMSPREE, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        document.getElementById('orderForm').style.display = 'none';
+        document.getElementById('orderSuccess').style.display = 'block';
+      } else {
+        submitBtn.textContent = 'Error — please try again';
+        submitBtn.disabled = false;
+      }
+    } catch {
+      submitBtn.textContent = 'Error — please try again';
+      submitBtn.disabled = false;
+    }
+  });
+
+  // Contact form submission
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    const data = new FormData(this);
+    try {
+      const res = await fetch(FORMSPREE, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('contactSuccess').style.display = 'block';
+      } else {
+        btn.textContent = 'Error — please try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Error — please try again';
+      btn.disabled = false;
+    }
+  });
 </script>
 
 </body>
