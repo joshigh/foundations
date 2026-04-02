@@ -616,7 +616,9 @@ p { color: var(--gray-text); line-height: 1.7; }
 .blog-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 .blog-card-img {
   height: 110px;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  background-color: var(--navy);
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
